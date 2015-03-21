@@ -3,8 +3,6 @@
 #include<unistd.h>
 #include<stdlib.h>
 #include<stdarg.h>
-#include<sys/stat.h>
-#include<sys/types.h>
 
 void usageErr(char *prgName);
 void errExit(char *errMsg, ...);
@@ -12,7 +10,6 @@ void errExit(char *errMsg, ...);
 int main(int argc, char *argv[])
 {
     int i;
-    struct stat buf;
 
     if(argc < 2)
         usageErr(argv[0]);
