@@ -44,6 +44,8 @@ main(int argc, char *argv[])
 
     close(sfd);
     close(dfd);
+
+    exit(EXIT_SUCCESS);
 }
 
 int openSrc(char *argv[])
