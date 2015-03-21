@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
     print(filename, l_flag, r_flag);
  
     printf("\n");
-    return 0;
+
+    exit(EXIT_SUCCESS);
 }
 
 // extract the filename and other flags
