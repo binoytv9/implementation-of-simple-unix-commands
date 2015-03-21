@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         if(unlinkat(AT_FDCWD, argv[i], 0) == -1)
             errExit("cannot remove '%s'", argv[i]);
 
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
 void usageErr(char *prgName)
