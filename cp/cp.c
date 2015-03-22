@@ -22,7 +22,7 @@ main(int argc, char *argv[])
     char buf[BUFMAX];
     ssize_t numRead, numWrite;
 
-    if(argc != 3)
+    if(argc != 3 || (argc == 2 && !strcmp(argv[1], "--help")))
         usageErr(argv[0]);
 
     sfd = openSrc(argv);
