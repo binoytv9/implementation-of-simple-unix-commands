@@ -54,7 +54,7 @@ void write2all(const char *input, int numRead, int fd[], char *argv[])
 
 void usageErr(char *prgName)
 {
-    fprintf(stderr, "Usage: %s [FILE]...\n"
+    fprintf(stderr, "Usage: %s [--help] [FILE]...\n"
                     "Copy standard input to each FILE, and also to standard output\n"
                   , prgName);
 
