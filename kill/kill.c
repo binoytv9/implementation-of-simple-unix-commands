@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 
 void usageErr(char *prgName)
 {
-    fprintf(stderr, "Usage: %s SIG PID\n", prgName);
+    fprintf(stderr, "Usage: %s [--help] [SIG] PID\n", prgName);
     exit(EXIT_FAILURE);
 }
 
