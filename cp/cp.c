@@ -90,7 +90,7 @@ int openDes(char *argv[])
 
 void usageErr(char *prgName)
 {
-    fprintf(stderr, "Usage: %s [SRC_FILE] [DEST_FILE]\n", prgName);
+    fprintf(stderr, "Usage: %s [--help] SRC_FILE DEST_FILE\n", prgName);
     exit(EXIT_FAILURE);
 }
 
