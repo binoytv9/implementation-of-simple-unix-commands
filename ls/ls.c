@@ -46,7 +46,10 @@ void parseArgv(char *argv[], char **filename, int *l_flag, int *r_flag)
     char *prgName = argv[0];
 
     while(*++argv != NULL)
-        if(*argv[0] == '-')
+        if(*argv[0] == '-'){
+            if(!strcmp(*argv, "--help"))
+                usageErr(prgName);
+
             while((opt = *++argv[0]) != '\0')
                 switch(opt){
                     case 'l':
@@ -60,6 +63,7 @@ void parseArgv(char *argv[], char **filename, int *l_flag, int *r_flag)
                         usageErr(prgName);
                         break;
                 }
+        }
         else
             *filename = *argv;
 }
@@ -196,7 +200,7 @@ void printTime(struct stat *buf)
 
 void usageErr(char *prgName)
 {
-    fprintf(stderr, "Usage: %s [OPTION]... [FILE]\n"
+    fprintf(stderr, "Usage: %s [--help] [OPTION]... [FILE]\n"
                     "-l\t use a long listing format\n"
                     "-R\t list subdirectories recursively\n", prgName);
     exit(EXIT_FAILURE);
