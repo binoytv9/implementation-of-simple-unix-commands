@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     int i;
 
-    if(argc < 2)
+    if(argc < 2 || (argc == 2 && !strcmp(argv[1], "--help")))
         usageErr(argv[0]);
 
     for(i = 1; argv[i] != NULL; ++i)
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
 void usageErr(char *prgName)
 {
-    fprintf(stderr, "Usage: %s [FILE]...\n", prgName);
+    fprintf(stderr, "Usage: %s [--help] FILE [...]\n", prgName);
     exit(EXIT_FAILURE);
 }
 
