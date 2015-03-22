@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     int sig = SIGTERM; // default
 
     pName = argv[0];
-    if(argc < 2)
+    if(argc < 2 || (argc == 2 && !strcmp(argv[1], "--help")))
         usageErr(pName);
 
     while((++argv)[0] != NULL)
