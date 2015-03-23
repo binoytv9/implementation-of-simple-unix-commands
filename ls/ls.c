@@ -77,14 +77,15 @@ void print(char *filename, int l_flag, int r_flag)
     char buf[PATH_MAX + 1];
     char fullPath[PATH_MAX + 1] = "";
 
+//printf("filename=%s\n", filename);
     if((dirp = opendir(filename)) == NULL)
         errExit("opendir: '%s'", filename);
 
     if(r_flag)
-        printf("%s:\n", filename);
+        printf("\n%s:", filename);
     while(errno = 0, (dp = readdir(dirp)) != NULL){
+        resolvePath(fullPath, filename, dp);
         if(l_flag){ // display long listing format
-            resolvePath(fullPath, filename, dp);
             if((bufp = realpath(fullPath, buf)) == NULL)
                 errExit("realpath %s", fullPath);
 
@@ -94,10 +95,12 @@ void print(char *filename, int l_flag, int r_flag)
         else // just print the file name
             printf("%s\t", dp->d_name);
 
+//printf("fullpath=%s\n", fullPath);
         // if recursive, if directory , if name not "." , if name not ".."
         if(r_flag && (dp->d_type & DT_DIR) && strcmp(dp->d_name, ".") && strcmp(dp->d_name, ".."))
             print(fullPath, l_flag, r_flag);
     }
+
     if(errno != 0)
         errExit("readdir: '%s'", filename);
 
@@ -212,5 +215,6 @@ void errExit(char *errMsg, ...)
 
     va_start(ap, errMsg);
     vwarn(errMsg, ap);
+    printf("\n");
     exit(EXIT_FAILURE);
 }
