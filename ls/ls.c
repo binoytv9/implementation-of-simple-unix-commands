@@ -179,11 +179,13 @@ void printUsrGrpName(struct stat *buf)
 
     errno = 0;
     if((up = getpwuid(buf->st_uid)) == NULL)
-        errExit("getpwuid");
+		if(errno != 0)
+	        errExit("getpwuid");
 
     errno = 0;
     if((gp = getgrgid(buf->st_gid)) == NULL)
-        errExit("getgrgid");
+		if(errno != 0)
+			errExit("getgrgid");
 
     printf(" %s", up->pw_name);
     printf(" %s", gp->gr_name);
